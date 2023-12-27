@@ -12,6 +12,17 @@ const GlobalStyles = createGlobalStyle`
     --rect-shadow: 3px 3px 5px -4px var(--dark-gray);
 }
 
+body.dark-mode {
+  --dark-Blue: hsl(209, 23%, 92%);
+  --very-dark-blue: hsl(207, 26%, 87%);
+  --very-darker-blue: hsl(200, 15%, 98%);
+  --dark-gray: hsl(0, 0%, 100%);
+  --very-light-gray: hsl(207, 26%, 17%);
+  --white: hsl(209, 23%, 22%);
+  --primary-shadow: 0 -3px 4px 3px var(--very-light-gray);
+  --rect-shadow: 3px 3px 5px -4px var(--very-light-gray);
+}
+
 
 
 *,

@@ -20,21 +20,12 @@ const StyledH1 = styled.h1`
   font-weight: 800;
 `;
 
-const Row = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  font-size: ${(props) => (props.font ? props.font : "1.4rem")};
-`;
-
 function Header() {
   return (
     <HeaderContainer>
       <StyledHeader>
         <StyledH1>Where in the world?</StyledH1>
-        <Row font="1.4rem">
-          <SwitchMode mode="Light" />
-        </Row>
+        <SwitchMode mode="Light" />
       </StyledHeader>
     </HeaderContainer>
   );
