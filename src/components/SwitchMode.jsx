@@ -12,8 +12,15 @@ const Row = styled.div`
 function SwitchMode() {
   const [mode, setMode] = useState("Dark");
 
+  const isDarkMode = localStorage.getItem("dark-mode") === "true";
+  document.body.classList.toggle("dark-mode", isDarkMode);
+
   function handleModeToggle() {
     document.body.classList.toggle("dark-mode");
+    localStorage.setItem(
+      "dark-mode",
+      document.body.classList.contains("dark-mode")
+    );
     if (document.body.classList.contains("dark-mode")) setMode("Light");
     else setMode("Dark");
   }
