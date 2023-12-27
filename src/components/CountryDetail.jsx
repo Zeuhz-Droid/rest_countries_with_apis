@@ -6,7 +6,11 @@ import { HiArrowLongLeft } from "react-icons/hi2";
 const StyledCountryDetail = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 5rem;
+  gap: 8rem;
+
+  @media (max-width: 768px) {
+    gap: 5rem;
+  }
 `;
 
 const BackButton = styled.button`

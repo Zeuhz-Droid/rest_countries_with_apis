@@ -2,7 +2,6 @@ import styled from "styled-components";
 import Country from "./Country";
 import { getCountries } from "../services/apiCountries";
 import { useLoaderData, useNavigate, useSearchParams } from "react-router-dom";
-import { useState } from "react";
 import Search from "./Search";
 import Filter from "./Filter";
 

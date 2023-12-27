@@ -30,6 +30,3 @@ const AppLayout = () => {
 };
 
 export default AppLayout;
-
-// (HomePage-- > QueryBar) & CountryCard;
-// CountryDetail;
