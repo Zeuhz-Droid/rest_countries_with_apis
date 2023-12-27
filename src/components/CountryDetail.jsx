@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { getCountry } from "../services/apiCountries";
 import { HiArrowLongLeft } from "react-icons/hi2";
 import { addComma } from "../utils/helper";
+import Error from "./Error";
 
 const StyledCountryDetail = styled.div`
   display: flex;
@@ -118,69 +119,73 @@ function CountryDetail() {
         &nbsp;
         <span>Back</span>
       </BackButton>
-      <Row space="30rem">
-        <ImgContainer>
-          <img src={png} alt={alt} />
-        </ImgContainer>
-        <Details>
-          <h2>{commonName}</h2>
-          <Row space="20rem">
-            <div>
-              <p>
-                <BoldText>Native Name:</BoldText>
-                &nbsp;
-                <span>{Object.values(nativeName)[0].official}</span>
-              </p>
-              <p>
-                <BoldText>Population:</BoldText>
-                &nbsp;
-                <span>{addComma(population)}</span>
-              </p>
-              <p>
-                <BoldText>Region:</BoldText>
-                &nbsp;
-                <span>{region}</span>
-              </p>
-              <p>
-                <BoldText>Sub Region:</BoldText>
-                &nbsp;
-                <span>{subregion}</span>
-              </p>
-              <p>
-                <BoldText>Capital:</BoldText>
-                &nbsp;
-                <span>{capitalCity}</span>
-              </p>
-            </div>
-            <div>
-              <p>
-                <BoldText>Top Level Domain:</BoldText>
-                &nbsp;
-                <span>{topLevelDomain}</span>
-              </p>
-              <p>
-                <BoldText>Currencies:</BoldText>
-                &nbsp;
-                <span>{Object.values(currencies)[0].name}</span>
-              </p>
-              <p>
-                <BoldText>Languages:</BoldText>
-                &nbsp;
-                <span>{Object.values(languages).join(", ")}</span>
-              </p>
-            </div>
-          </Row>
-          <SpaceUp>
-            <BoldText>Border Countries:</BoldText>
-            &nbsp;
-            <BorderCountries>
-              {Object.values(languages).map((lang) => (
-                <span key={lang}>{lang}</span>
-              ))}
-            </BorderCountries>
-          </SpaceUp>
-        </Details>
-      </Row>
+      {country.length ? (
+        <Row space="30rem">
+          <ImgContainer>
+            <img src={png} alt={alt} />
+          </ImgContainer>
+          <Details>
+            <h2>{commonName}</h2>
+            <Row space="20rem">
+              <div>
+                <p>
+                  <BoldText>Native Name:</BoldText>
+                  &nbsp;
+                  <span>{Object.values(nativeName)[0].official}</span>
+                </p>
+                <p>
+                  <BoldText>Population:</BoldText>
+                  &nbsp;
+                  <span>{addComma(population)}</span>
+                </p>
+                <p>
+                  <BoldText>Region:</BoldText>
+                  &nbsp;
+                  <span>{region}</span>
+                </p>
+                <p>
+                  <BoldText>Sub Region:</BoldText>
+                  &nbsp;
+                  <span>{subregion}</span>
+                </p>
+                <p>
+                  <BoldText>Capital:</BoldText>
+                  &nbsp;
+                  <span>{capitalCity}</span>
+                </p>
+              </div>
+              <div>
+                <p>
+                  <BoldText>Top Level Domain:</BoldText>
+                  &nbsp;
+                  <span>{topLevelDomain}</span>
+                </p>
+                <p>
+                  <BoldText>Currencies:</BoldText>
+                  &nbsp;
+                  <span>{Object.values(currencies)[0].name}</span>
+                </p>
+                <p>
+                  <BoldText>Languages:</BoldText>
+                  &nbsp;
+                  <span>{Object.values(languages).join(", ")}</span>
+                </p>
+              </div>
+            </Row>
+            <SpaceUp>
+              <BoldText>Border Countries:</BoldText>
+              &nbsp;
+              <BorderCountries>
+                {Object.values(languages).map((lang) => (
+                  <span key={lang}>{lang}</span>
+                ))}
+              </BorderCountries>
+            </SpaceUp>
+          </Details>
+        </Row>
+      ) : (
+        <Error />
+      )}
     </StyledCountryDetail>
   );
 }

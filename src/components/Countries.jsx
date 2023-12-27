@@ -1,9 +1,10 @@
 import styled from "styled-components";
 import Country from "./Country";
 import { getCountries } from "../services/apiCountries";
-import { useLoaderData, useNavigate, useSearchParams } from "react-router-dom";
+import { useLoaderData, useSearchParams } from "react-router-dom";
 import Search from "./Search";
 import Filter from "./Filter";
+import Error from "./Error";
 
 const StyledCountries = styled.div`
   display: grid;
@@ -41,7 +42,6 @@ const regions = [
 function Countries() {
   let countries = useLoaderData();
   const [searchParams] = useSearchParams();
-  const navigate = useNavigate();
 
   const queriedCountry = searchParams.get("country");
   const queriedFilter = searchParams.get("filter");
@@ -70,11 +70,15 @@ function Countries() {
         <Search />
         <Filter name="Filter by Region" options={regions} />
       </Row>
-      <StyledCountries>
-        {countries?.map((country) => (
-          <Country key={country.name.common} country={country} />
-        ))}
-      </StyledCountries>
+      {countries.length ? (
+        <StyledCountries>
+          {countries?.map((country) => (
+            <Country key={country.name.common} country={country} />
+          ))}
+        </StyledCountries>
+      ) : (
+        <Error />
+      )}
     </>
   );
 }

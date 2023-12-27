@@ -4,6 +4,7 @@ import Countries, { loader as countriesLoader } from "./components/Countries";
 import CountryDetail, {
   loader as countryDetailLoader,
 } from "./components/CountryDetail";
+import Error from "./components/Error";
 
 const router = createBrowserRouter([
   {
@@ -14,13 +15,13 @@ const router = createBrowserRouter([
         path: "/:query?",
         element: <Countries />,
         loader: countriesLoader,
-        errorElement: <p>Error...</p>,
+        errorElement: <Error type="countries" />,
       },
       {
         path: "/country/:countryName?",
         element: <CountryDetail />,
         loader: countryDetailLoader,
-        errorElement: <p>This one no work.</p>,
+        errorElement: <Error type="countryDetail" />,
       },
     ],
   },
