@@ -77,7 +77,7 @@ function Countries() {
           ))}
         </StyledCountries>
       ) : (
-        <Error />
+        <Error type="country" />
       )}
     </>
   );

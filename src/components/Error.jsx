@@ -14,9 +14,11 @@ const StyledH1 = styled.h1`
   color: var(--dark-blue);
 `;
 
-function Error({ type = "countryDetail" }) {
+function Error({ type = "country" }) {
   let message;
-  if (type === "countryDetail") message = "countries NOT Found";
+  if (type === "countryDetail")
+    message = "Sorry this country doesn't have details, Yet.";
+  if (type === "country") message = "country NOT Found";
   if (type === "countries") message = "couldn't Fetch Countries.";
 
   return (

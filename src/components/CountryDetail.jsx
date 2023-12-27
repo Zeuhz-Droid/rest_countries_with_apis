@@ -184,7 +184,7 @@ function CountryDetail() {
           </Details>
         </Row>
       ) : (
-        <Error />
+        <Error type="countryDetail" />
       )}
     </StyledCountryDetail>
   );
