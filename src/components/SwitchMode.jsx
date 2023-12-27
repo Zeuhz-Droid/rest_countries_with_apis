@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { HiMoon, HiSun } from "react-icons/hi2";
 import styled from "styled-components";
 
@@ -12,17 +12,19 @@ const Row = styled.div`
 function SwitchMode() {
   const [mode, setMode] = useState("Dark");
 
-  const isDarkMode = localStorage.getItem("dark-mode") === "true";
-  document.body.classList.toggle("dark-mode", isDarkMode);
+  useEffect(() => {
+    const isDarkMode = localStorage.getItem("dark-mode") === "Dark";
+    document.body.classList.toggle("dark-mode", isDarkMode);
+    setMode(isDarkMode ? "Dark" : "Light");
+  }, []);
 
   function handleModeToggle() {
     document.body.classList.toggle("dark-mode");
-    localStorage.setItem(
-      "dark-mode",
-      document.body.classList.contains("dark-mode")
-    );
-    if (document.body.classList.contains("dark-mode")) setMode("Light");
-    else setMode("Dark");
+    const newMode = document.body.classList.contains("dark-mode")
+      ? "Dark"
+      : "Light";
+    setMode(newMode);
+    localStorage.setItem("dark-mode", newMode);
   }
 
   return (
