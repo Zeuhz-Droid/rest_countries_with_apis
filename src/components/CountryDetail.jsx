@@ -2,6 +2,7 @@ import { useLoaderData, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { getCountry } from "../services/apiCountries";
 import { HiArrowLongLeft } from "react-icons/hi2";
+import { addComma } from "../utils/helper";
 
 const StyledCountryDetail = styled.div`
   display: flex;
@@ -100,6 +101,7 @@ function CountryDetail() {
     capital: [capitalCity],
     region,
     subregion,
+    borders,
     languages,
     population,
   } = country[0];
@@ -132,7 +134,7 @@ function CountryDetail() {
               <p>
                 <BoldText>Population:</BoldText>
                 &nbsp;
-                <span>{population}</span>
+                <span>{addComma(population)}</span>
               </p>
               <p>
                 <BoldText>Region:</BoldText>
@@ -173,7 +175,7 @@ function CountryDetail() {
             &nbsp;
             <BorderCountries>
               {Object.values(languages).map((lang) => (
-                <span>{lang}</span>
+                <span key={lang}>{lang}</span>
               ))}
             </BorderCountries>
           </SpaceUp>

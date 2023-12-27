@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import { addComma } from "../utils/helper";
 
 const StyledCountry = styled.div`
   display: flex;
@@ -49,7 +50,7 @@ function Country({ country }) {
         <div>
           <p>
             Population:&nbsp;
-            <Span>{population}</Span>
+            <Span>{addComma(population)}</Span>
           </p>
           <p>
             Region:&nbsp;
