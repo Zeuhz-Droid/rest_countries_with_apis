@@ -51,7 +51,7 @@ function Search({ placeholder = "Search for a country..." }) {
 
   function handleFocus(e) {
     if (!e.target.value) {
-      searchParams.set("country", "");
+      searchParams.delete("country");
       setSearchParams(searchParams);
     }
   }
